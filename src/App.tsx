@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './App.css';
+import HomePage from './containers/HomePage';
 
 const logo = require('./logo.svg');
 
 export interface AppProps { name: string; }
 
-type State = {
-};
+type State = {};
 
 class App extends React.Component<AppProps, State> {
   render() {
@@ -16,13 +16,9 @@ class App extends React.Component<AppProps, State> {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">{this.props.name}</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <HomePage />
       </div>
     );
   }
 }
-// const App = (props: AppProps) => <p>{props.name}</p>;
-
 export default App;
