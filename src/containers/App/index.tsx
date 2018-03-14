@@ -1,14 +1,14 @@
 import * as React from 'react';
-import './App.css';
-import HomePage from './containers/HomePage';
+import './style.css';
+import HomePage from '../HomePage';
 
 const logo = require('./logo.svg');
 
-export interface AppProps { name: string; }
+export interface AppProps { name?: string; }
 
 type State = {};
 
-class App extends React.Component<AppProps, State> {
+export default class App extends React.PureComponent<AppProps, State> {
   render() {
     return (
       <div className="App">
@@ -21,4 +21,3 @@ class App extends React.Component<AppProps, State> {
     );
   }
 }
-export default App;
