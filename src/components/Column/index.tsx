@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Ticket from '../Ticket';
 
-import { Icolumn } from '../../containers/HomePage';
+import { Icolumn } from '../../containers/App';
 
 export default function Column(column: Icolumn): JSX.Element {
   const { details, tickets } = column;

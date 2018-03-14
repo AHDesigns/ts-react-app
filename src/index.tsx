@@ -13,10 +13,11 @@ const store = createStore<StoreState>(enthusiasm, {
   enthusiasmLevel: 1
 });
 
+global.console.log(App);
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />,
-    {/* <div>hi</div> */}
+    <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );

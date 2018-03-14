@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Iticket } from '../../containers/HomePage';
+import { Iticket } from '../../containers/App';
 
 export default function Ticket(ticket: Iticket): JSX.Element {
   return (
