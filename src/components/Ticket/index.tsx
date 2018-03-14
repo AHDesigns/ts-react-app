@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Iticket } from '../../containers/HomePage';
 
-function Ticket(ticket: Iticket) {
+export default function Ticket(ticket: Iticket): JSX.Element {
   return (
     <div>
       {ticket.name}
@@ -10,5 +10,3 @@ function Ticket(ticket: Iticket) {
     </div>
   );
 }
-
-export default Ticket;
