@@ -4,8 +4,20 @@ import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
+import { createStore } from 'redux';
+import { enthusiasm } from './reducers';
+import { StoreState } from './types';
+import { Provider } from 'react-redux';
+
+const store = createStore<StoreState>(enthusiasm, {
+  enthusiasmLevel: 1
+});
+
 ReactDOM.render(
-  <App name="Welcome to Chuff" />,
+  <Provider store={store}>
+    <App />,
+    {/* <div>hi</div> */}
+  </Provider>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
