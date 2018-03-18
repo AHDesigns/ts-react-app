@@ -1,4 +1,5 @@
-import { Icolumn } from '../types';
+import { EnthusiasmAction } from '../actions';
+import { Icolumn, Store } from '../types';
 import { INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from '../constants/index';
 
 const list1: Icolumn = {
@@ -23,17 +24,19 @@ const list2: Icolumn = {
     ],
 };
 
-const initialState: Icolumn[] = [
+const sampleTickets: Icolumn[] = [
     list1,
-    list2,
-];
+    list2
+]; 
 
-export function tickets(state: any = initialState, action: any) {
+export const initialState: Store.Ttickets = { tickets: [] };
+
+export function tickets(state: Store.Ttickets = initialState, action: EnthusiasmAction) {
     switch (action.type) {
         case INCREMENT_ENTHUSIASM:
-            return { ...state };
+            return { ...state, tickets: sampleTickets };
         case DECREMENT_ENTHUSIASM:
-            return { ...state };
+            return initialState;
         default:
             return state;
     }

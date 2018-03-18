@@ -1,16 +1,13 @@
 // src/types/index.tsx
-// export interface StoreState { enthusiasmLevel: number; }
+export namespace Store {
+  export type All = { 
+    enthusiasm: Tenthusiasm
+    tickets: Ttickets
+  };
 
-// export namespace Store {
-
-//   export type All = { enthusiasm: Enthusiasm };
-// }
-
-export interface Ienthusiasm { enthusiasmLevel: number; }
-
-// export interface Store {
-//   enthusiasm: Enthusiasm;
-// }
+  export type Tenthusiasm = { enthusiasmLevel: number; };
+  export type Ttickets = { tickets: Icolumn[] };
+}
 
 export interface Idetails { name: string; }
 
@@ -19,8 +16,8 @@ export interface Iticket { name: string; body: string; }
 export interface Icolumn { details: Idetails; tickets: Iticket[]; }
 
 export interface AppProps {
-  enthusiasm: Ienthusiasm;
-  tickets?: any;
+  enthusiasm: Store.Tenthusiasm;
+  tickets: Store.Ttickets;
   onIncrement?: () => void;
   onDecrement?: () => void;
 }

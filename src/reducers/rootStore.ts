@@ -1,10 +1,14 @@
-import { createStore, combineReducers } from 'redux';
-import { enthusiasm } from '../reducers/enthusiasm';
-import { tickets } from '../reducers/tickets';
+import { createStore, combineReducers, Store as StoreT } from 'redux';
+import { enthusiasm, initialState as enthusiasmIS } from '../reducers/enthusiasm';
+import { tickets, initialState as ticketsIS } from '../reducers/tickets';
+import { Store } from '../types';
 
-const reducers = combineReducers({
+const reducers = combineReducers<Store.All>({
     enthusiasm,
     tickets
 });
 
-export const store = createStore(reducers, {});
+export const store: StoreT<Store.All> = createStore(reducers, {
+    enthusiasm: enthusiasmIS,
+    tickets: ticketsIS
+});

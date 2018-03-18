@@ -5,16 +5,13 @@ import { connect, Dispatch } from 'react-redux';
 
 import './style.css';
 
-import { Icolumn, AppProps } from '../../types';
+import { Icolumn, AppProps, Store } from '../../types';
 
 const logo = require('./logo.svg');
 import Column from '../../components/Column';
 
 function App({ enthusiasm, tickets, onDecrement, onIncrement }: AppProps): JSX.Element {
-  // const { enthusiasmLevel } = enthusiasm;
-  const mess = enthusiasm.enthusiasmLevel;
-
-  const columns = tickets.map((column: Icolumn) => (
+  const columns = tickets.tickets.map((column: Icolumn) => (
     <Column key={column.details.name} {...column} />
   ));
 
@@ -26,7 +23,7 @@ function App({ enthusiasm, tickets, onDecrement, onIncrement }: AppProps): JSX.E
       </header>
       <div className="homepage-wrapper">
         <div className="greeting">
-          Hello {mess}
+          Hello {enthusiasm.enthusiasmLevel}
         </div>
         <div>
           <button onClick={onDecrement}>-</button>
@@ -38,7 +35,7 @@ function App({ enthusiasm, tickets, onDecrement, onIncrement }: AppProps): JSX.E
   );
 }
 
-export function mapStateToProps({ enthusiasm, tickets }: any) {
+export function mapStateToProps({ enthusiasm, tickets }: Store.All) {
   return { enthusiasm, tickets };
 }
 
