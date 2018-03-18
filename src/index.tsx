@@ -4,14 +4,8 @@ import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-import { createStore } from 'redux';
-import { enthusiasm } from './reducers';
-import { StoreState } from './types';
 import { Provider } from 'react-redux';
-
-const store = createStore<StoreState>(enthusiasm, {
-  enthusiasmLevel: 1
-});
+import { store } from './reducers/rootStore';
 
 ReactDOM.render(
   <Provider store={store}>
