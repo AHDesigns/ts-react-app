@@ -6,20 +6,10 @@ import { connect, Dispatch } from 'react-redux';
 
 import './style.css';
 
+import { Icolumn, AppProps } from '../../types';
+
 const logo = require('./logo.svg');
 import Column from '../../components/Column';
-
-interface Idetails { name: string; }
-
-export interface Iticket { name: string; body: string; }
-
-export interface Icolumn { details: Idetails; tickets: Iticket[]; }
-
-export interface AppProps {
-  enthusiasmLevel?: number;
-  onIncrement?: () => void;
-  onDecrement?: () => void;
-}
 
 function App({ enthusiasmLevel, onDecrement, onIncrement }: AppProps): JSX.Element {
   const list1: Icolumn = {

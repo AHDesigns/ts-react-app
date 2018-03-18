@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { ShallowWrapper, shallow } from 'enzyme';
 
-import { Icolumn } from '../../../containers/App';
-import { Iticket } from '../../../containers/App';
+import { Icolumn, Iticket } from '../../../types';
 
 import Column from '../index';
-import Ticket from '../index';
 
 let wrapper: ShallowWrapper<undefined, undefined>;
 
@@ -20,7 +18,7 @@ function commonTests() {
 }
 
 describe('Column', () => {
-  let tickets: Iticket[];
+  let tickets: Iticket[] = [];
 
   let defaultProps: Icolumn = {
     details: { name: 'dave' },
