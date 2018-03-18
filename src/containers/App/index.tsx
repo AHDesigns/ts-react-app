@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import * as actions from '../../actions';
-import { StoreState } from '../../types';
 import { connect, Dispatch } from 'react-redux';
 
 import './style.css';
@@ -11,36 +10,11 @@ import { Icolumn, AppProps } from '../../types';
 const logo = require('./logo.svg');
 import Column from '../../components/Column';
 
-function App({ enthusiasmLevel, onDecrement, onIncrement }: AppProps): JSX.Element {
-  const list1: Icolumn = {
-    details: {
-      name: 'Chuff!',
-    },
-    tickets: [
-      { name: 'ticket1 title', body: 'ticket body' },
-      { name: 'ticket2 title', body: 'ticket body' },
-      { name: 'ticket2 title', body: 'ticket body' },
-      { name: 'ticket2 title', body: 'ticket body' },
-      { name: 'ticket2 title', body: 'ticket body' },
-      { name: 'ticket2 title', body: 'ticket body' },
-      { name: 'ticket2 title', body: 'ticket body' },
-      { name: 'ticket2 title', body: 'ticket body' },
-    ],
-  };
+function App({ enthusiasm, tickets, onDecrement, onIncrement }: AppProps): JSX.Element {
+  // const { enthusiasmLevel } = enthusiasm;
+  const mess = enthusiasm.enthusiasmLevel;
 
-  const list2: Icolumn = {
-    details: { name: 'list2' }, tickets: [
-      { name: 'ticket1 title', body: 'ticket body' },
-      { name: 'ticket2 title', body: 'ticket body' },
-    ],
-  };
-
-  const allColumns: Icolumn[] = [
-    list1,
-    list2,
-  ];
-
-  const columns = allColumns.map((column: Icolumn) => (
+  const columns = tickets.map((column: Icolumn) => (
     <Column key={column.details.name} {...column} />
   ));
 
@@ -52,7 +26,7 @@ function App({ enthusiasmLevel, onDecrement, onIncrement }: AppProps): JSX.Eleme
       </header>
       <div className="homepage-wrapper">
         <div className="greeting">
-          Hello {enthusiasmLevel}
+          Hello {mess}
         </div>
         <div>
           <button onClick={onDecrement}>-</button>
@@ -64,10 +38,8 @@ function App({ enthusiasmLevel, onDecrement, onIncrement }: AppProps): JSX.Eleme
   );
 }
 
-export function mapStateToProps({ enthusiasmLevel }: StoreState) {
-  return {
-    enthusiasmLevel
-  };
+export function mapStateToProps({ enthusiasm, tickets }: any) {
+  return { enthusiasm, tickets };
 }
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>) {
