@@ -2,13 +2,14 @@ import 'isomorphic-fetch';
 
 export const getSomething = () => fetch('/api...').then(res => res.json());
 
-export const getGit = () => fetch('https://example.com:1234/users', {
+export const getGit = () => fetch('https://api.github.com/users/octocat/orgs', {
+  method: 'GET',
   credentials: 'include',
   headers: {
-    Accept: 'application/json',
+    Accept: 'application/vnd.github.v3+json',
     'Content-Type': 'application/json'
   }
-})
+});
 
 // }).then((res) => {
 //   if (res.status === 500) {

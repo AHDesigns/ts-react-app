@@ -13,13 +13,13 @@ const reducers = combineReducers<Store.All>({
     tickets
 });
 
-export const store: any = createStore(
+export const store: StoreT<Store.All>  = createStore(
     reducers,
-    applyMiddleware(sagaMiddleware),
     {
         enthusiasm: enthusiasmIS,
         tickets: ticketsIS
-    }
+    },
+    applyMiddleware(sagaMiddleware)
 );
 
 sagaMiddleware.run(mySaga);
