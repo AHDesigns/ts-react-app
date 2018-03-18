@@ -1,20 +1,19 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { getGit } from './apis';
+import { getGitPrivate } from './apis';
+import * as constants from '../constants';
+import * as actions from '../actions';
 
-export function * fetchData(action: any) {
+export function * fetchData(action: actions.RequestAction) {
   try {
-    console.log(action);
-    const data = yield call(getGit, action);
-    console.log(data);
-    yield put({type: 'REQUEST_SUCCSS', apps: data});
+    const data = yield call(getGitPrivate, action);
+    yield put({type: constants.INCREMENT_ENTHUSIASM, apps: data});
   } catch (error) {
-    console.log(error);
-    yield put({type: 'REQUEST_FAILURE', message: error.message});
+    yield put({type: constants.REQUEST_FAILURE, message: error.message});
   }
 }
 
 function* mySaga() {
-  yield takeLatest('DECREMENT_ENTHUSIASM', fetchData);
+  yield takeLatest(constants.DECREMENT_ENTHUSIASM, fetchData);
 }
 
 export default mySaga;

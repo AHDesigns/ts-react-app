@@ -8,6 +8,16 @@ export interface DecrementEnthusiasm {
         type: constants.DECREMENT_ENTHUSIASM;
 }
 
+export interface RequestSuccess {
+        type: constants.REQUEST_SUCCESS;
+}
+
+export interface RequestFailure {
+        type: constants.REQUEST_FAILURE;
+}
+
+export type RequestAction = RequestSuccess | RequestFailure;
+
 export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
 
 export function incrementEnthusiasm(): IncrementEnthusiasm {
@@ -19,5 +29,17 @@ export function incrementEnthusiasm(): IncrementEnthusiasm {
 export function decrementEnthusiasm(): DecrementEnthusiasm {
         return {
                 type: constants.DECREMENT_ENTHUSIASM
+        };
+}
+
+export function requestSuccess(): RequestSuccess {
+        return {
+                type: constants.REQUEST_SUCCESS
+        };
+}
+
+export function requestFailure(): RequestFailure {
+        return {
+                type: constants.REQUEST_FAILURE
         };
 }
