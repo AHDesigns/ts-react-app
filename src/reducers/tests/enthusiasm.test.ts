@@ -1,5 +1,5 @@
 import { enthusiasm, initialState } from '../enthusiasm';
-import { incrementEnthusiasm, decrementEnthusiasm } from '../../actions';
+import { incrementEnthusiasm } from '../../actions';
 
 describe('enthusiasm', () => {
     describe('initial state', () => {
