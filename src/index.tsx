@@ -4,8 +4,13 @@ import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
+import { Provider } from 'react-redux';
+import { store } from './reducers/rootStore';
+
 ReactDOM.render(
-  <App name="Welcome to Chuff" />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
