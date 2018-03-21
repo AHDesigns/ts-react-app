@@ -1,9 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const { join }  = require('path');
-const request = require('request');
 const bodyParser = require('body-parser');
+const request = require('request');
 
-const port = 3000;
+const port = 3001;
 const app = express();
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -18,9 +19,24 @@ app.get('/', (req, res) => {
 });
 
 app.post('/git', (req, res) => {
-  console.log(req.body);
-  return res.json({ hi: 'hi' })
+  const options = {
+    method: 'POST',
+    uri: 'https://api.github.com/graphql',
+    body: req.body,
+    headers: {
+      'User-Agent': 'Pancake',
+      Authorization: `bearer ${process.env.GITHUB_TOKEN}`
+    },
+    json: true
+  };
 
+  request(options, (err, reqRes, body) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(body)
+    }
+  })
 })
 
 app.listen(port, () => {

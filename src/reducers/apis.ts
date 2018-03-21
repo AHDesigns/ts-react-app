@@ -25,7 +25,6 @@ export const getG = () => fetch('/git', {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    name: 'Hubot',
-    login: 'hubot',
+    query: 'query limit { rateLimit { cst } }'
   })
 });
