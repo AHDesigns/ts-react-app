@@ -8,6 +8,9 @@ export function * fetchData(action: actions.RequestAction) {
     const data = yield call(getG, action);
     yield put({type: constants.INCREMENT_ENTHUSIASM, apps: data});
   } catch (error) {
+    // this is an error with the request itself
+    // any other errors will just come back in the data response
+    console.log(error);
     yield put({type: constants.REQUEST_FAILURE, message: error.message});
   }
 }

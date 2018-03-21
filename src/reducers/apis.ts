@@ -25,6 +25,6 @@ export const getG = () => fetch('/git', {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    query: 'query limit { rateLimit { cst } }'
+    query: 'query limit { rateLimit { cost } }'
   })
 });
